@@ -54,5 +54,20 @@ router.post('/edit/:id', async (req,res)=>{//(or)router.put
 	
 });
 
+//add user to particular project
+router.post('/addu', async (req,res)=>{
+
+	
+
+	try{
+	const updatedPost=await Post.update({_id:req.body.pid},
+		{$push: {'contributors.id':req.body.uid}});
+	res.json({message:'User details updated'});
+	}catch(err){
+		res.json({message:err});
+	}
+
+});
+
 
 module.exports=router;
