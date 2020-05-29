@@ -10,6 +10,11 @@ const PostSchema=mongoose.Schema({
 	description:{
 		type:String,
 		required:true
+	},
+	contributors:{
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+        }
 	}
 
 });
