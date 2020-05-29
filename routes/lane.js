@@ -12,7 +12,6 @@ router.get('/:id',async(req,res)=>{
 		const post=await Lane.findById(req.params.id);
 		res.json(post);
 	}catch(err){
-
 		res.json({message:err});
 	}
 });
@@ -29,8 +28,15 @@ router.post('/add', async (req,res)=>{//add the lane to the current user's(uid) 
 
 	try{
 	const savedPost=await post.save();
-	res.json({message:'Lane added'});
-	
+		//res.json(savedPost._id);
+		const laneid=savedPost._id;
+
+		//updating in Project for with lane_id
+		const savinginproject =await Post.update({_id:req.body.pid},
+		{$push: {'lane.id': savedPost._id}});
+		res.json(savinginproject);
+		
+
 	}catch(err) {
 		res.json({message: err});
 	}
