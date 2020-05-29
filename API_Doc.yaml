@@ -7,7 +7,7 @@ servers:
 paths:
     /api/user/project/:
     get:
-      summary: 'Gets info about project'
+      summary: 'Gets info about project with lane_info(lane_id),so as to fetch prefilled fields/maps'
       consumes:
         - application/json
       parameters:
@@ -286,7 +286,7 @@ paths:
                 
     /api/user/lane/add:
     post:
-      summary: 'add the lane to the current users(uid) project(pid)' 
+      summary: 'add the lane to the current users(uid) project(pid), update the lane_id in Projects attr(DB)' 
       consumes:
         - application/json
       parameters:
