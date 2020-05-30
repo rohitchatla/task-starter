@@ -44,7 +44,7 @@ router.post('/add', async (req,res)=>{//add the lane to the current user's(uid) 
 });
 
 
-//add a new phase in lane(lid),same goes for other components too
+//add a new phase in lane(lid),same goes for other components too..
 router.post('/node/add', async (req,res)=>{
 	try{
 	const updatedPost=await Lane.update({_id:req.body.lid},
